@@ -1,0 +1,56 @@
+body {
+    font-family: 'Arial', sans-serif; /* Use Arial for wide support and professional look */
+    font-size: 16px;
+}
+
+#logo {
+    border-radius: 50%;
+    width: 80px;  /* Adjust width and height as needed */
+    height: 80px;
+}
+
+button {
+    margin: 0 5px;
+}
+
+#itemsTable {
+    width: 100%;
+}
+
+.table {
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.table th {
+    background-color: #f8f9fa;
+}
+
+.btn-dark.mode-toggle {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.dark-mode #itemsTable {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.dark-mode #itemsTable th, .dark-mode #itemsTable td {
+    border-color: #454d55;
+}
+
+.dark-mode #itemsTable th {
+    background-color: #3b434b;
+}
+
+.dark-mode {
+    background-color: #343a40;
+    color: #fff;
+}
+
+#addItem {
+    margin-bottom: 30px;
+}

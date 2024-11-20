@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #toggleMode {
+            background-image: url('sun.png');
+            background-size: 24px 24px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+</head>
+<body dir="ltr">
+    <div class="container mt-5">
+        <header>
+            <!-- Logo -->
+            <img src="logo.jpg" class="float-right mx-3" height="100px" id="logo">
+            <!-- Language selector -->
+            <div class="form-group float-left ml-2">
+                <select class="form-control" id="language" onchange="toggleLanguage()">
+                    <option value="en">English</option>
+                    <option value="ar">العربية</option>
+                    <option value="fr">Français</option>
+                </select>
+            </div>
+            <!-- Toggle dark mode -->
+            <button id="toggleMode" class="btn btn-warning float-left" onclick="toggleDarkMode()">🌞/🌙</button>
+        </header>
+        <h2 class="text-center mb-4" id="pageTitle">Control Panel</h2>
+        <form id="controlPanelForm" class="form-horizontal">
+            <div class="form-group">
+                <label for="itemName" id="itemNameLabel">Item Name:</label>
+                <input type="text" class="form-control" id="itemName">
+            </div>
+            <div class="form-group">
+                <label for="quantity" id="quantityLabel">Quantity:</label>
+                <input type="number" class="form-control" id="quantity" oninput="calculateTotalPrice()">
+            </div>
+            <div class="form-group">
+                <label for="unitPrice" id="unitPriceLabel">Unit Price:</label>
+                <input type="number" class="form-control" id="unitPrice" oninput="calculateTotalPrice()">
+            </div>
+            <div class="form-group">
+                <label for="totalPrice" id="totalPriceLabel">Total Price:</label>
+                <input type="number" class="form-control" id="totalPrice" readonly>
+            </div>
+            <div class="form-group">
+                <label for="sellingPrice" id="sellingPriceLabel">Selling Price:</label>
+                <input type="number" class="form-control" id="sellingPrice" oninput="calculateProfit()">
+            </div>
+            <div class="form-group">
+                <label for="profit" id="profitLabel">Profit:</label>
+                <input type="number" class="form-control" id="profit" onchange="calculateTotalProfit()" readonly>
+            </div>
+            <div class="form-group">
+                <label for="totalProfit" id="totalProfitLabel">Total Profit:</label>
+                <input type="number" class="form-control" id="totalProfit" readonly>
+            </div>
+            <input type="color" id="colorPicker" style="display: none;">
+            <button type="button" class="btn btn-primary mt-2" id="addButton" onclick="addTable()">Add Table</button>
+            <button type="button" class="btn btn-primary mt-2" id="exportExcelButton" onclick="exportToExcel()">Export to Excel</button>
+            <button type="button" class="btn btn-primary mt-2" id="exportPdfButton" onclick="exportTableToPDF()">Export to PDF</button>
+        </form>
+        <table class="table mt-4" id="itemsTable">
+            <thead>
+                <tr>
+                    <th id="itemNameHeader">Item Name</th>
+                    <th id="quantityHeader">Quantity</th>
+                    <th id="unitPriceHeader">Unit Price</th>
+                    <th id="totalPriceHeader">Total Price</th>
+                    <th id="sellingPriceHeader">Selling Price</th>
+                    <th id="profitHeader">Profit</th>
+                    <th id="totalProfitHeader">Total Profit</th>
+                    <th id="actionsHeader">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <footer>© 2023 - Control Panel</footer>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
